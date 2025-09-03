@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define MAX 100
+
+int graph[MAX][MAX], visited[MAX], queue[MAX], front=0, rear=0, n;
+
+void enqueue(int v) { queue[rear++] = v; }
+int dequeue() { return queue[front++]; }
+
+void bfs(int start) {
+    for(int i=0; i<n; i++) visited[i]=0;
+    enqueue(start);
+    visited[start]=1;
+    while(front != rear) {
+        int u = dequeue();
+        printf("%d ", u);
+        for(int v=0; v<n; v++) {
+            if(graph[u][v] && !visited[v]) {
+                enqueue(v);
+                visited[v] = 1;
+            }
+        }
+    }
+}
+
+int main() {
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+    printf("Enter adjacency matrix:\n");
+    for(int i=0; i<n; i++)
+        for(int j=0; j<n; j++)
+            scanf("%d", &graph[i][j]);
+
+    printf("BFS traversal: ");
+    bfs(0);
+    return 0;
+}
