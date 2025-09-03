@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() {
+    int n, a[100];
+    printf("Enter count: ");
+    scanf("%d", &n);
+    printf("Enter numbers:\n");
+    for(int i=0;i<n;i++) {
+        scanf("%d", &a[i]);
+        if(a[i]%2==0)
+            printf("%d is Even\n", a[i]);
+        else
+            printf("%d is Odd\n", a[i]);
+    }
+    return 0;
+}
